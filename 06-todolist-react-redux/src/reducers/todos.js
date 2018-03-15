@@ -1,4 +1,4 @@
-const todo = (state = [], action) => {
+const todos = (state = [], action) => {
   switch(action.type) {
     case 'ADD_TODO':
       return [...state, { id: action.id, text: action.text, done: false }];
@@ -19,4 +19,4 @@ const todo = (state = [], action) => {
   }
 }
 
-export { todo };
+export { todos };

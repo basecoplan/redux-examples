@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { todo } from './reducers/todo';
+import { todos } from './reducers/todo';
 
 const initialState = [
   { id: 1, text: 'Read article', done: true },
@@ -7,6 +7,6 @@ const initialState = [
   { id: 3, text: 'Change passport', done: false },
   { id: 4, text: 'Order pizza', done: true },
 ];
-const store = createStore(todo, initialState);
+const store = createStore(todos, initialState);
 
 export default store;
