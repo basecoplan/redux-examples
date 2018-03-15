@@ -5,7 +5,7 @@ class AddTodo extends Component {
     super(props);
 
     this.onTextChange = this.onTextChange.bind(this);
-    props.store.subscribe(() => this.setState({filter: props.store.getState.filter}));
+    props.store.subscribe(() => this.forceUpdate());
   }
 
   render() {

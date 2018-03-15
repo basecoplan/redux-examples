@@ -5,15 +5,13 @@ class TodoList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = props.store.getState();
-
-    props.store.subscribe(() => this.setState(props.store.getState()));
+    props.store.subscribe(() => this.forceUpdate());
   }
 
   render() {
-    
-    const list = this.state.todos
-      .filter(todo => todo.text.includes(this.state.filter))
+    const {todos, filter} = this.props.store.getState();
+    const list = todos
+      .filter(todo => todo.text.includes(filter))
       .map(todo =>
         <Todo
           store={this.props.store} 

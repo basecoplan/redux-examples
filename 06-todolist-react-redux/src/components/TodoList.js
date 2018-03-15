@@ -5,13 +5,11 @@ class TodoList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { todos: props.store.getState() }
-
-    props.store.subscribe(() => this.setState({ todos: props.store.getState()}));
+    props.store.subscribe(() => this.forceUpdate());
   }
 
   render() {
-    const list = this.state.todos
+    const list = this.props.store.getState()
       .map(todo =>
         <Todo
           store={this.props.store} 
@@ -23,7 +21,7 @@ class TodoList extends Component {
       <section className="TodoList">
         {list}
       </section>
-    )
+    );
   }
 }
 

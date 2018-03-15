@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { todos } from './reducers/todo';
+import { todos } from './reducers/todos';
 
 const initialState = [
   { id: 1, text: 'Read article', done: true },
