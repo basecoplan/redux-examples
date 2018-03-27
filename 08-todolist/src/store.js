@@ -6,7 +6,7 @@ const initialState = {
     { id: 1, text: 'Read article', done: true },
     { id: 2, text: 'Write letter', done: false },
     { id: 3, text: 'Change passport', done: false },
-    { id: 4, text: 'Order pizza', done: true },
+    { id: 4, text: 'Order pizza', done: false },
   ], 
   filter: ''
 };
