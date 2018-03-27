@@ -1,5 +1,6 @@
 import React, { Component }from 'react';
 import { connect } from 'react-redux';
+import { toggle, remove} from '../action';
 import './Todo.css';
 
 class Todo extends Component {
@@ -19,8 +20,8 @@ class Todo extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggle: (id) => dispatch({ type: 'TOGGLE_TODO', id }),
-    remove: (id) => dispatch({ type: 'REMOVE_TODO', id })
+    toggle: (id) => dispatch(toggle(id)),
+    remove: (id) => dispatch(remove(id))
   }
 }
 

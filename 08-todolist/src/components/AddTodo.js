@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addTodo } from '../action';
 
 class AddTodo extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class AddTodo extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTodo: (text) => dispatch({ type: 'ADD_TODO', text, id: Date.now() })
+    addTodo: (text) => dispatch(addTodo(text))
   }
 }
 

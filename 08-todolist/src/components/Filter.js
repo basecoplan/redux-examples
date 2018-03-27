@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { filterChanged } from '../action';
+
 
 class AddTodo extends Component {
   constructor(props) {
@@ -30,7 +32,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    filterChanged: (filter) => dispatch({ type: 'FILTER_CHANGED', filter })
+    filterChanged: (filter) => dispatch(filterChanged(filter))
   };
 }
 
