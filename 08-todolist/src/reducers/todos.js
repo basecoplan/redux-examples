@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from '../action';
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, FETCH_TODOS_SUCCESS } from '../action';
 
 const todos = (state = [], action) => {
   switch(action.type) {
@@ -16,6 +16,8 @@ const todos = (state = [], action) => {
       return index >= 0
         ? [...state.slice(0, index), ...state.slice(index + 1)]
         : state;
+    case FETCH_TODOS_SUCCESS:
+      return [...state, ...action.todos];
     default:
       return state;
   }

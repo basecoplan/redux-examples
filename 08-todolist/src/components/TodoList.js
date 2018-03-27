@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { load } from '../action';
 import Todo from './Todo';
 
 class TodoList extends Component {
+  
+  componentDidMount() {
+    this.props.loadTodos();
+  }
+
   render() {
     const list = this.props.todos
       .filter(todo => todo.text.includes(this.props.superFilter))
@@ -23,8 +29,15 @@ class TodoList extends Component {
 const mapStateToProps = (state) => {
   return { 
     todos: state.todos,
-    superFilter: state.filter
+    superFilter: state.filter,
+    status: state.status
   };
 }
 
-export default connect(mapStateToProps)(TodoList);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadTodos: () => dispatch(load())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
