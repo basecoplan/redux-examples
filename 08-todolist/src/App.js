@@ -7,9 +7,9 @@ class App extends Component {
   render() {
     return (
       <section className="App">
-        <Filter store={this.props.store} />
-        <AddTodo store={this.props.store} />
-        <TodoList store={this.props.store} />
+        <Filter />
+        <AddTodo />
+        <TodoList />
       </section>
     )
   }

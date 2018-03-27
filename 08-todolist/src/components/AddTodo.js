@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class AddTodo extends Component {
   constructor(props) {
@@ -26,8 +27,14 @@ class AddTodo extends Component {
   }
 
   onAdd() {
-    this.props.store.dispatch({ type: 'ADD_TODO', text: this.state.text, id: Date.now() });
+    this.props.addTodo(this.state.text);
   }
 }
 
-export default AddTodo;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTodo: (text) => dispatch({ type: 'ADD_TODO', text, id: Date.now() })
+  }
+}
+
+export default connect(undefined, mapDispatchToProps)(AddTodo);

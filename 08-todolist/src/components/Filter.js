@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class AddTodo extends Component {
   constructor(props) {
     super(props);
 
     this.onTextChange = this.onTextChange.bind(this);
-    props.store.subscribe(() => this.forceUpdate());
   }
 
   render() {
     return (
       <section className="Filter">
         <span>Filter: </span>
-        <input type="text" value={this.props.store.getState().filter} onChange={this.onTextChange} />
+        <input type="text" value={this.props.filterText} onChange={this.onTextChange} />
       </section>
     )
   }
 
   onTextChange(e) {
-    this.props.store.dispatch({ type: 'FILTER_CHANGED', filter: e.target.value });
+    this.props.filterChanged(e.target.value);
   }
 }
 
-export default AddTodo;
+const mapStateToProps = (state) => {
+  return {
+    filterText: state.filter
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterChanged: (filter) => dispatch({ type: 'FILTER_CHANGED', filter })
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddTodo);

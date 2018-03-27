@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Todo from './Todo';
 
 class TodoList extends Component {
-  constructor(props) {
-    super(props);
-
-    props.store.subscribe(() => this.forceUpdate());
-  }
-
   render() {
-    
-    const list = this.props.store.getState().todos
-      .filter(todo => todo.text.includes(this.state.filter))
+    const list = this.props.todos
+      .filter(todo => todo.text.includes(this.props.superFilter))
       .map(todo =>
         <Todo
-          store={this.props.store} 
           key={todo.id}
           todo={todo}
         />
@@ -27,4 +20,11 @@ class TodoList extends Component {
   }
 }
 
-export default TodoList;
+const mapStateToProps = (state) => {
+  return { 
+    todos: state.todos,
+    superFilter: state.filter
+  };
+}
+
+export default connect(mapStateToProps)(TodoList);
